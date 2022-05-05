@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Comments({comments}) {
   console.log(comments)
@@ -10,12 +10,18 @@ function Comments({comments}) {
       </div>
     )
   })
+
+  const [showing, setShowing] = useState(true)
+  function handleComments() {
+    setShowing((showing) => !showing)
+  }
+  const btnText = showing ? "Hide comments" : "Show Comments"
   return (
     <div>
-      <button>Comments show</button>
+      <button onClick={handleComments}>{btnText}</button>
       <hr />
       <h3>{comments.length} Comments</h3>
-      {commentList}
+      {showing ? commentList : ""}
     </div>
   )
 }
