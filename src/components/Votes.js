@@ -5,7 +5,6 @@ function Votes({upvotes, downvotes}) {
 
   function upVote(){
     upvote(vote + 1)
-    console.log(vote)
   }
 
   const [votes, downvote] = useState(downvotes)
