@@ -1,12 +1,16 @@
 import React, { useState } from "react";
+import Votes from "./Votes";
 
 function Comments({comments}) {
   console.log(comments)
   const commentList = comments.map((comment) => {
+    let initialUp = 0
+    let initialDown = 0
     return (
       <div key={comment.id}>
         <h4>{comment.user}</h4>
         <p>{comment.comment}</p>
+        <Votes upvotes={initialUp} downvotes={initialDown}/>
       </div>
     )
   })
