@@ -1,7 +1,8 @@
 import React from "react";
 
-function Video({video}) {
+function Video({video, title}) {
   return (
+    <>
     <iframe
         width="919"
         height="525"
@@ -10,6 +11,8 @@ function Video({video}) {
         allowFullScreen
         title="Thinking in React"
       />
+      <h2>{title}</h2>
+    </>
   )
 }
 
