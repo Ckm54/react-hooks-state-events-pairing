@@ -29,14 +29,18 @@ function Comments({comments}) {
     setComment(remainingComments)
   }
 
+  function handlesort(){
+    const sortedComments = [...comments].sort((a,b) => a.upvotes < b.upvotes ? 1 : -1)
+    setComment(sortedComments)
+  }
+
+
   const commentList = commentsDisplay.map((comment) => {
-    let initialUp = 0
-    let initialDown = 0
     return (
       <div key={comment.id}>
         <h4>{comment.user}</h4>
         <p>{comment.comment}</p>
-        <Votes upvotes={initialUp} downvotes={initialDown}/>
+        <Votes upvotes={comment.upvotes} downvotes={comment.downvotes}/>
         <button onClick={() => {deleteComment(comment.id)}}>Remove Comment</button>
       </div>
     )
@@ -46,11 +50,15 @@ function Comments({comments}) {
   function handleComments() {
     setShowing((showing) => !showing)
   }
+
   const btnText = showing ? "Hide comments" : "Show Comments"
   return (
     <div>
       <button onClick={handleComments}>{btnText}</button>
       <hr />
+      <button onClick={handlesort}>Sort Comments by votes</button>
+      <br/>
+      <br/>
       <form onSubmit={handleSubmit}>
         <input type="text" placeholder="Search by username..." onChange={getInputValue}/>
         <input type="submit" value="Search" />
