@@ -1,6 +1,6 @@
 import React from "react";
 
-function Video({video, title}) {
+function Video({video, title, views, date}) {
   return (
     <>
     <iframe
@@ -12,6 +12,7 @@ function Video({video, title}) {
         title="Thinking in React"
       />
       <h2>{title}</h2>
+      <p>{views} Views | Uploaded {date}</p>
     </>
   )
 }
