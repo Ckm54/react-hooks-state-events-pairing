@@ -18,7 +18,7 @@ function Comments({comments}) {
       if(!inputFromUser){
         return comment;
       } else {
-        return (comment.user === inputFromUser)
+        return (comment.user.indexOf(inputFromUser) !== -1)
       }
     })
     setComment(commentsDisplayed)
