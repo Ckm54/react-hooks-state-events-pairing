@@ -1,6 +1,8 @@
 import React from "react";
+import Comments from "./Comments";
+import Votes from "./Votes";
 
-function Video({video, title, views, date}) {
+function Video({video}) {
   return (
     <>
     <iframe
@@ -11,8 +13,10 @@ function Video({video, title, views, date}) {
         allowFullScreen
         title="Thinking in React"
       />
-      <h2>{title}</h2>
-      <p>{views} Views | Uploaded {date}</p>
+      <h2>{video.title}</h2>
+      <p>{video.views} Views | Uploaded {video.createdAt}</p>
+      <Votes upvotes={video.upvotes} downvotes={video.downvotes}/>
+      <Comments comments={video.comments} />
     </>
   )
 }
