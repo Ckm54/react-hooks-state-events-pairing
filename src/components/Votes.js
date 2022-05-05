@@ -1,20 +1,21 @@
 import React, { useState } from "react";
 
 function Votes({upvotes, downvotes}) {
-  const [vote, upvote] = useState(upvotes)
+  const [votesUp, setUpVote] = useState(upvotes)
+  const [votesDown, setDownVote] = useState(downvotes)
 
   function upVote(){
-    upvote(vote + 1)
+    setUpVote(votesUp + 1)
   }
-
-  const [votes, downvote] = useState(downvotes)
   function downVote() {
-    downvote(votes - 1)
+    setDownVote(votesDown + 1)
   }
   return (
     <>
-    <button onClick={upVote}>{vote}👍</button>
-    <button onClick={downVote}>{votes}👎</button>
+    <button onClick={upVote}>{votesUp}👍</button>
+    <button onClick={downVote}>{votesDown}👎</button>
+    <br/>
+    <br/>
     </>
   )
 }
