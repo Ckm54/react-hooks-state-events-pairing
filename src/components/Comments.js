@@ -24,7 +24,10 @@ function Comments({comments}) {
     setComment(commentsDisplayed)
   }
 
-  
+  function deleteComment(id) {
+    const remainingComments = comments.filter((comment) => comment.id !== id)
+    setComment(remainingComments)
+  }
 
   const commentList = commentsDisplay.map((comment) => {
     let initialUp = 0
@@ -34,6 +37,7 @@ function Comments({comments}) {
         <h4>{comment.user}</h4>
         <p>{comment.comment}</p>
         <Votes upvotes={initialUp} downvotes={initialDown}/>
+        <button onClick={() => {deleteComment(comment.id)}}>Remove Comment</button>
       </div>
     )
   })
